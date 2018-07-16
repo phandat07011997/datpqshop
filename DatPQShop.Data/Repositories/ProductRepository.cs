@@ -8,13 +8,14 @@ using System.Threading.Tasks;
 
 namespace DatPQShop.Data.Repositories
 {
-    public interface IProductRepository
+    public interface IProductRepository : IRepository<Product>
     {
 
     }
-    class ProductRepository : RepositoryBase<Product>, IProductRepository
+    public class ProductRepository : RepositoryBase<Product>, IProductRepository
     {
-        public ProductRepository(IDbFactory dbFactory) : base(dbFactory)
+        public ProductRepository(IDbFactory dbFactory) 
+            : base(dbFactory)
         {
 
         }
