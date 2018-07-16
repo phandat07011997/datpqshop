@@ -3,7 +3,7 @@ using DatPQShop.Model.Models;
 
 namespace DatPQShop.Data.Repositories
 {
-    public interface IPostTagRepository:IRepository<PostTag>
+    public interface IPostTagRepository : IRepository<PostTag>
     {
     }
 
