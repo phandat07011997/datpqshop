@@ -12,12 +12,12 @@ namespace DatPQShop.Web.Api
     public class PostCategoryController : ApiControllerBase
     {
         IPostCategoryService _postCategoeyService;
-        public PostCategoryController(IErrorService errorService,IPostCategoryService postCategoryService):
+        public PostCategoryController(IErrorService errorService, IPostCategoryService postCategoryService) :
             base(errorService)
         {
             this._postCategoeyService = postCategoryService;
         }
-        public HttpResponseMessage Post(HttpRequestMessage request,PostCategory postCategory)
+        public HttpResponseMessage Post(HttpRequestMessage request, PostCategory postCategory)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -28,7 +28,7 @@ namespace DatPQShop.Web.Api
                 }
                 else
                 {
-                    var category =_postCategoeyService.Add(postCategory);
+                    var category = _postCategoeyService.Add(postCategory);
                     _postCategoeyService.Save();
                     response = request.CreateResponse(HttpStatusCode.Created, category);
                 }
@@ -78,17 +78,8 @@ namespace DatPQShop.Web.Api
         {
             return CreateHttpResponse(request, () =>
             {
-                HttpResponseMessage response = null;
-                if (ModelState.IsValid)
-                {
-                    request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-                }
-                else
-                {
-                    var listCategory= _postCategoeyService.GetAll();
-                    
-                    response = request.CreateResponse(HttpStatusCode.OK,listCategory);
-                }
+                var listCategory = _postCategoeyService.GetAll();
+                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listCategory);
                 return response;
             });
         }
