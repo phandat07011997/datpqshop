@@ -2,6 +2,7 @@
 using DatPQShop.Data.Repositories;
 using DatPQShop.Model.Models;
 using System.Collections.Generic;
+using System;
 
 namespace DatPQShop.Service
 {
@@ -18,6 +19,8 @@ namespace DatPQShop.Service
         IEnumerable<PostCategory> GetAllByParentId(int parentId);
 
         PostCategory GetById(int id);
+
+        void Save();
     }
 
     public class PostCategoryService : IPostCategoryService
@@ -54,6 +57,11 @@ namespace DatPQShop.Service
         public PostCategory GetById(int id)
         {
             return _postCategoryRepository.GetSingleById(id);
+        }
+
+        public void Save()
+        {
+            _unitOfWork.Commit();
         }
 
         public void Update(PostCategory postCategory)

@@ -1,39 +1,96 @@
-﻿using System;
+﻿using DatPQShop.Model.Models;
+using DatPQShop.Service;
+using DatPQShop.Web.Infrastructure.Core;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
 namespace DatPQShop.Web.Api
 {
-    public class PostCategoryController : ApiController
+    [RoutePrefix("api/postcategory")]
+    public class PostCategoryController : ApiControllerBase
     {
-        // GET api/<controller>
-        public IEnumerable<string> Get()
+        IPostCategoryService _postCategoeyService;
+        public PostCategoryController(IErrorService errorService,IPostCategoryService postCategoryService):
+            base(errorService)
         {
-            return new string[] { "value1", "value2" };
+            this._postCategoeyService = postCategoryService;
+        }
+        public HttpResponseMessage Post(HttpRequestMessage request,PostCategory postCategory)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+                if (ModelState.IsValid)
+                {
+                    request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                else
+                {
+                    var category =_postCategoeyService.Add(postCategory);
+                    _postCategoeyService.Save();
+                    response = request.CreateResponse(HttpStatusCode.Created, category);
+                }
+                return response;
+            });
         }
 
-        // GET api/<controller>/5
-        public string Get(int id)
+        public HttpResponseMessage Put(HttpRequestMessage request, PostCategory postCategory)
         {
-            return "value";
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+                if (ModelState.IsValid)
+                {
+                    request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                else
+                {
+                    _postCategoeyService.Update(postCategory);
+                    _postCategoeyService.Save();
+                    response = request.CreateResponse(HttpStatusCode.OK);
+                }
+                return response;
+            });
         }
 
-        // POST api/<controller>
-        public void Post([FromBody]string value)
+        public HttpResponseMessage Delete(HttpRequestMessage request, int id)
         {
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+                if (ModelState.IsValid)
+                {
+                    request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                else
+                {
+                    _postCategoeyService.Delete(id);
+                    _postCategoeyService.Save();
+                    response = request.CreateResponse(HttpStatusCode.OK);
+                }
+                return response;
+            });
         }
-
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
+        [Route("getall")]
+        public HttpResponseMessage Get(HttpRequestMessage request)
         {
-        }
-
-        // DELETE api/<controller>/5
-        public void Delete(int id)
-        {
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+                if (ModelState.IsValid)
+                {
+                    request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                else
+                {
+                    var listCategory= _postCategoeyService.GetAll();
+                    
+                    response = request.CreateResponse(HttpStatusCode.OK,listCategory);
+                }
+                return response;
+            });
         }
     }
 }
