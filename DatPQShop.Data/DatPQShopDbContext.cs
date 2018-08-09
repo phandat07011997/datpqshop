@@ -1,4 +1,5 @@
 ﻿using DatPQShop.Model.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DatPQShop.Data
 {
-    public class DatPQShopDbContext : DbContext
+    public class DatPQShopDbContext : IdentityDbContext<ApplicationUser>
     {
         public DatPQShopDbContext() : base("DatPQShopConnection")
         {
@@ -33,9 +34,15 @@ namespace DatPQShop.Data
         public DbSet<VisitorStatistic> VisitorStatistics { set; get; }
         public DbSet<Error> Errors { set; get; }
 
+        public static DatPQShopDbContext Create()
+        {
+            return new DatPQShopDbContext();
+        }
+
         protected override void OnModelCreating(DbModelBuilder builder)
         {
-            
+            builder.Entity<IdentityUserRole>().HasKey(i => new { i.UserId, i.RoleId });
+            builder.Entity<IdentityUserLogin>().HasKey(i => i.UserId);
         }
     }
 }
