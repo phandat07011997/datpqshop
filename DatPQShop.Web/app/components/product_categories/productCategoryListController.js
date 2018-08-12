@@ -14,4 +14,4 @@
         }
         $scope.getProductCategories();
     }
-})(angular.module('datpqshop.products'));
+})(angular.module('datpqshop.product_categories'));
