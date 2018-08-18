@@ -238,6 +238,7 @@
     <Content Include="app\shared\filters\statusFilter.js" />
     <Content Include="app\shared\modules\datpqshop.common.js" />
     <Content Include="app\shared\services\apiService.js" />
+    <Content Include="app\shared\services\notificationService.js" />
     <Content Include="Assets\admin\css\AdminLTE.css" />
     <Content Include="Assets\admin\css\AdminLTE.min.css" />
     <Content Include="Assets\admin\css\alt\AdminLTE-bootstrap-social.css" />
@@ -1927,6 +1928,10 @@
     <Content Include="Assets\admin\libs\slimscroll\examples\style.css" />
     <Content Include="Assets\admin\libs\slimscroll\jquery.slimscroll.js" />
     <Content Include="Assets\admin\libs\slimscroll\jquery.slimscroll.min.js" />
+    <Content Include="Assets\admin\libs\toastr\toastr.css" />
+    <Content Include="Assets\admin\libs\toastr\toastr.js" />
+    <Content Include="Assets\admin\libs\toastr\toastr.min.css" />
+    <Content Include="Assets\admin\libs\toastr\toastr.min.js" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
@@ -2088,7 +2093,6 @@
     <Content Include="Assets\admin\libs\bootstrap\nuget\MyGet.ps1" />
     <Content Include="Assets\admin\libs\bootstrap\package.json" />
     <Content Include="Assets\admin\libs\bootstrap\README.md" />
-    <Content Include="Assets\admin\libs\jquery\.bower.json" />
     <Content Include="Assets\admin\libs\jquery\.editorconfig" />
     <Content Include="Assets\admin\libs\jquery\.jscsrc" />
     <Content Include="Assets\admin\libs\jquery\.jshintignore" />
@@ -2190,6 +2194,14 @@
     <Content Include="Assets\admin\Ionicons\scss\_ionicons-font.scss" />
     <Content Include="Assets\admin\Ionicons\scss\_ionicons-icons.scss" />
     <Content Include="Assets\admin\Ionicons\scss\_ionicons-variables.scss" />
+    <Content Include="Assets\admin\libs\toastr\.bower.json" />
+    <Content Include="Assets\admin\libs\toastr\bower.json" />
+    <Content Include="Assets\admin\libs\toastr\LICENSE" />
+    <Content Include="Assets\admin\libs\toastr\README.md" />
+    <Content Include="Assets\admin\libs\toastr\toastr.js.map" />
+    <Content Include="Assets\admin\libs\toastr\toastr.less" />
+    <Content Include="Assets\admin\libs\toastr\toastr.scss" />
+    <Content Include="Assets\admin\libs\jquery\.bower.json" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
