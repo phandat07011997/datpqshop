@@ -1,12 +1,12 @@
-﻿using DatPQShop.Model.Models;
-using DatPQShop.Service;
-using System;
+﻿using System;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using DatPQShop.Model.Models;
+using DatPQShop.Service;
 
 namespace DatPQShop.Web.Infrastructure.Core
 {

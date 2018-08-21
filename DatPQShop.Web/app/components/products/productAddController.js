@@ -14,7 +14,7 @@
         }
         $scope.ckeditorOptions = {
             language: 'vi',
-            height:'200px'
+            height: '200px'
         }
         $scope.AddProduct = AddProduct;
         function AddProduct() {
@@ -32,7 +32,14 @@
                 console.log('Can not get list parent');
             });
         }
+        $scope.ChooseImage = function () {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                $scope.product.Image = fileUrl;
+            }
+            finder.popup();
+        }
         loadProductCategories();
-        
+
     }
 })(angular.module('datpqshop.products'));
