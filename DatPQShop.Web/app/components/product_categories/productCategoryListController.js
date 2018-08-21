@@ -9,7 +9,7 @@
         $scope.keyword = '';
         $scope.getProductCategories = getProductCategories;
         $scope.search = search;
-        $scope.deleteCategoryProduct = deleteCategoryProduct;
+        $scope.deleteProductCategory = deleteProductCategory;
         $scope.selectAll = selectAll;
         $scope.deleteMultiple = deleteMultiple;
         $scope.$watch("productCategories", function (n, o) {
@@ -55,7 +55,7 @@
                 $scope.isAll = false;
             }
         }
-        function deleteCategoryProduct(id) {
+        function deleteProductCategory(id) {
             $ngBootbox.confirm('Bạn có chắc muốn xóa ?').then(function () {
                 var config = {
                     params: {

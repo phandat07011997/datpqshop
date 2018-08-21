@@ -97,5 +97,31 @@ namespace DatPQShop.Web.Infrastructure.Extensions
             post.Status = postVm.Status;
 
         }
+
+        public static void UpdateProduct(this Product product, ProductViewModel productVm)
+        {
+            product.Name = productVm.Name;
+            product.Alias = productVm.Alias;
+            product.MoreImages = productVm.MoreImages;
+            product.ID = productVm.ID;
+            product.PromotionPrice = productVm.PromotionPrice;
+            product.CategoryID = productVm.CategoryID;
+            product.Price = productVm.Price;
+            product.Image = productVm.Image;
+            product.Description = productVm.Description;
+            product.Warranty = productVm.Warranty;
+            product.Content = productVm.Content;
+            product.HomeFlag = productVm.HomeFlag;
+            product.HotFlag = productVm.HotFlag;
+            product.ViewCount = productVm.ViewCount;
+            product.CreatedDate = productVm.CreatedDate;
+            product.CreatedBy = productVm.CreatedBy;
+            product.UpdateDate = productVm.UpdateDate;
+            product.MetaKeyword = productVm.MetaKeyword;
+            product.MetaDescription = productVm.MetaDescription;
+            product.Status = productVm.Status;
+            product.UpdateBy = productVm.UpdateBy;
+
+        }
     }
 }

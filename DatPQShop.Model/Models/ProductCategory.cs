@@ -35,5 +35,6 @@ namespace DatPQShop.Model.Models
         public bool? HomeFlag { set; get; }
 
         public virtual IEnumerable<Product> Products { set; get; }
+        
     }
 }
