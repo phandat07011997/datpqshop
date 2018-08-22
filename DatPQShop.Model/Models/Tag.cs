@@ -18,7 +18,7 @@ namespace DatPQShop.Model.Models
 
         [MaxLength(50)]
         [Required]
-        public string Nane { set; get; }
+        public string Name { set; get; }
 
         [MaxLength]
         [Required]

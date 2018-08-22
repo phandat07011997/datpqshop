@@ -10,7 +10,7 @@ namespace DatPQShop.Web.Models
         
         public string ID { set; get; }
         
-        public string Nane { set; get; }
+        public string Name { set; get; }
         
         public string Type { set; get; }
     }
