@@ -105,4 +105,5 @@ namespace DatPQShop.Web.App_Start
             return owinManager;
         }
     }
+    
 }

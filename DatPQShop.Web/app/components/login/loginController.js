@@ -1,5 +1,4 @@
-﻿/// <reference path="C:\Users\DatPQ\Documents\datpqshop\DatPQShop.Web\Assets/admin/libs/angular/angular.js" />
-(function (app) {
+﻿(function (app) {
     app.controller('loginController', ['$scope', 'loginService', '$injector', 'notificationService',
         function ($scope, loginService, $injector, notificationService) {
 

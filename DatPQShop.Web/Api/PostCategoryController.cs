@@ -12,6 +12,7 @@ using DatPQShop.Web.Infrastructure.Extensions;
 namespace DatPQShop.Web.Api
 {
     [RoutePrefix("api/postcategory")]
+    [Authorize]
     public class PostCategoryController : ApiControllerBase
     {
         IPostCategoryService _postCategoeyService;

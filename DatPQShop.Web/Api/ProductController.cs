@@ -15,6 +15,7 @@ using System.Web.Script.Serialization;
 namespace DatPQShop.Web.Api
 {
     [RoutePrefix("api/product")]
+    [Authorize]
     public class ProductController : ApiControllerBase
     {
         #region Initialize
@@ -97,6 +98,7 @@ namespace DatPQShop.Web.Api
                 {
                     var newProduct = new Product();
                     newProduct.UpdateProduct(productVm);
+                    newProduct.CreatedBy = User.Identity.Name;
                     newProduct.CreatedDate = DateTime.Now;
                     _productService.Add(newProduct);
                     _productService.Save();
@@ -125,6 +127,7 @@ namespace DatPQShop.Web.Api
                     var dbProduct = _productService.GetById(productVm.ID);
                     dbProduct.UpdateProduct(productVm);
                     dbProduct.UpdateDate = DateTime.Now;
+                    dbProduct.UpdateBy = User.Identity.Name;
                     _productService.Update(dbProduct);
                     _productService.Save();
                     var responseData = Mapper.Map<Product, ProductViewModel>(dbProduct);

@@ -1,12 +1,13 @@
 ﻿/// <reference path="C:\Users\DatPQ\Documents\datpqshop\DatPQShop.Web\Assets/admin/libs/angular/angular.js" />
 (function () {
-    angular.module('datpqshop', ['datpqshop.products', 'datpqshop.product_categories', 'datpqshop.common']).config(config).config(configAuthentication).config(['$qProvider', function ($qProvider) {
-        $qProvider.errorOnUnhandledRejections(false);
-    }]);
+    angular.module('datpqshop', ['datpqshop.products', 'datpqshop.product_categories', 'datpqshop.common'])
+        .config(config)
+        .config(configAuthentication);
     config.$inject = ['$stateProvider', '$urlRouterProvider'];
     function config($stateProvider, $urlRouterProvider) {
         $stateProvider
             .state('base', {
+                url:'',
                 templateUrl: "/app/shared/views/baseView.html",
                 abstract: true
             })
