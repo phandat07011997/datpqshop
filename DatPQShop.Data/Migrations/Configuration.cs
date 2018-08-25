@@ -1,5 +1,6 @@
 ﻿namespace DatPQShop.Data.Migrations
 {
+    using Common;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using Model.Models;
@@ -64,8 +65,15 @@
                 context.ProductCategories.AddRange(listProductCategory);
                 context.SaveChanges();
             }
+        
 
-
+        }
+        private void Footer(DatPQShopDbContext context)
+        {
+            if (context.Footers.Count(x => x.ID == CommonConstants.DefaultFooterID) == 0)
+            {
+                string content = "";
+            }
         }
     }
 }
