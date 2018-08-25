@@ -20,6 +20,7 @@ namespace DatPQShop.Web.Mappings
             Mapper.CreateMap<ProductTag, ProductTagViewModel>();
             Mapper.CreateMap<ProductCategory, ProductCategoryViewModel>();
             Mapper.CreateMap<Footer, FooterViewModel>();
+            Mapper.CreateMap<Slide, SlideViewModel>();
         }
     }
 }

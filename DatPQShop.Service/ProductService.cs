@@ -24,6 +24,10 @@ namespace DatPQShop.Service
 
         IEnumerable<Product> GetAll(string keyword);
 
+        IEnumerable<Product> GetLastest(int top);
+
+        IEnumerable<Product> GetHotProduct(int top);
+
         void Save();
     }
 
@@ -123,6 +127,16 @@ namespace DatPQShop.Service
             {
                 _productTagRepository.DeleteMulti(x => x.ProductID == Product.ID);
             }
+        }
+
+        public IEnumerable<Product> GetLastest(int top)
+        {
+            return _ProductRepository.GetMulti(x => x.Status == true).OrderByDescending(x => x.CreatedDate).Take(top);
+        }
+
+        public IEnumerable<Product> GetHotProduct(int top)
+        {
+            return _ProductRepository.GetMulti(x => x.Status == true && x.HotFlag == true).OrderByDescending(x => x.CreatedDate).Take(top);
         }
     }
 }

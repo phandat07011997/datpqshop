@@ -12,16 +12,30 @@ namespace DatPQShop.Web.Controllers
 {
     public class HomeController : Controller
     {
+        IProductService _productService;
         IProductCategoryService _productCategoryService;
         ICommonService _commonService;
-        public HomeController(IProductCategoryService productCategoryService, ICommonService commonService)
+        public HomeController(IProductCategoryService productCategoryService, ICommonService commonService, IProductService productService)
         {
+            this._productService = productService;
             this._commonService = commonService;
             this._productCategoryService = productCategoryService;
         }
         public ActionResult Index()
         {
-            return View();
+
+            var slideModel = _commonService.GetSlides();
+            var slideView = Mapper.Map<IEnumerable<Slide>, IEnumerable<SlideViewModel>>(slideModel);
+            var homeViewModel = new HomeViewModel();
+
+            var lastestProductModel = _productService.GetLastest(3);
+            var topSaleProductModel = _productService.GetHotProduct(3);
+            var lastestProductViewModel = Mapper.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(lastestProductModel);
+            var topSaleProductViewModel = Mapper.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(topSaleProductModel);
+            homeViewModel.Slides = slideView;
+            homeViewModel.TopSaleProducts = topSaleProductViewModel;
+            homeViewModel.LastestProducts = lastestProductViewModel;
+            return View(homeViewModel);
         }
 
         public ActionResult About()
