@@ -22,6 +22,8 @@ namespace DatPQShop.Service
 
         Product GetById(int id);
 
+        IEnumerable<string> GetListProductByName(string name);
+
         IEnumerable<Product> GetAll(string keyword);
 
         IEnumerable<Product> GetLastest(int top);
@@ -29,6 +31,8 @@ namespace DatPQShop.Service
         IEnumerable<Product> GetHotProduct(int top);
 
         IEnumerable<Product> GetListProductByCategoryIdPaging(int categoryId,int page,int pageSize,out int totalRow,string sort);
+
+        IEnumerable<Product> Search(string keyword, int page, int pageSize, out int totalRow, string sort);
 
         void Save();
     }
@@ -162,5 +166,34 @@ namespace DatPQShop.Service
             totalRow = query.Count();
             return query.Skip((page - 1) * pageSize).Take(pageSize);
         }
+
+        public IEnumerable<Product> Search(string keyword, int page, int pageSize, out int totalRow, string sort)
+        {
+            var query = _ProductRepository.GetMulti(x => x.Status == true && x.Name.Contains(keyword));
+            switch (sort)
+            {
+                case "popular":
+                    query = query.OrderByDescending(x => x.ViewCount);
+                    break;
+                case "discount":
+                    query = query.OrderByDescending(x => x.PromotionPrice.HasValue);
+                    break;
+                case "price":
+                    query = query.OrderBy(x => x.Price);
+                    break;
+                default:
+                    query = query.OrderByDescending(x => x.CreatedDate);
+                    break;
+            }
+            totalRow = query.Count();
+            return query.Skip((page - 1) * pageSize).Take(pageSize);
+        }
+
+        public IEnumerable<string> GetListProductByName(string name)
+        {
+            return _ProductRepository.GetMulti(x => x.Status == true && x.Name.Contains(name)).Select(y => y.Name);
+        }
+
+        
     }
 }

@@ -26,6 +26,25 @@ namespace DatPQShop.Web.Controllers
         {
             return View();
         }
+        public ActionResult Search(string keyword, int page = 1, string sort = "")
+        {
+
+            int pageSize = int.Parse(ConfigHelper.GetBykey("PageSize"));
+            int totalRow = 0;
+            var productModel = _productService.Search(keyword, page, pageSize, out totalRow, sort);
+            var productViewModel = Mapper.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(productModel);
+            int totalPage = (int)Math.Ceiling((double)totalRow / pageSize);
+            var paginationSet = new PaginationSet<ProductViewModel>()
+            {
+                Items = productViewModel,
+                MaxPage = int.Parse(ConfigHelper.GetBykey("MaxPage")),
+                Page = page,
+                TotalCount = totalRow,
+                TotalPages = totalPage
+            };
+            ViewBag.Keyword = keyword;
+            return View(paginationSet);
+        }
         public ActionResult Category(int id,int page=1,string sort="")
         {
             
@@ -45,6 +64,16 @@ namespace DatPQShop.Web.Controllers
             var categoryViewModel = Mapper.Map<ProductCategory, ProductCategoryViewModel>(categoryModel);
             ViewBag.Category = categoryViewModel;
             return View(paginationSet);
+        }
+        public JsonResult GetListProductByName(string keyword)
+        {
+            var productViewModel=_productService.GetListProductByName(keyword);
+            return Json(
+                new
+                {
+                    data = productViewModel
+                },JsonRequestBehavior.AllowGet
+                );
         }
     }
 }
