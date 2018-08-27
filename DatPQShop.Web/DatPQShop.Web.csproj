@@ -1731,7 +1731,10 @@
     <Content Include="Assets\client\js\jquery.etalage.min.js" />
     <Content Include="Assets\client\js\jquery.flexisel.js" />
     <Content Include="Assets\client\js\jquery.min.js" />
+    <Content Include="Assets\client\js\jquery.twbsPagination.min.js" />
     <Content Include="Assets\client\js\jquery.wmuSlider.js" />
+    <Content Include="Assets\client\js\mustache.min.js" />
+    <Content Include="Assets\client\js\productController.js" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Libs\CKFinder.dll" />

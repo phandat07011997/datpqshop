@@ -26,15 +26,45 @@ namespace DatPQShop.Web.Controllers
         {
             return View();
         }
-        public ActionResult Category(int id,int page=1)
+        public ActionResult Category(int id)
         {
-            
-            int pageSize = int.Parse(ConfigHelper.GetBykey("PageSize"));
+            var categoryModel = _productCategoryService.GetById(id);
+            var categoryViewModel = Mapper.Map<ProductCategory, ProductCategoryViewModel>(categoryModel);
+            ViewBag.Category = categoryViewModel;
+            return View();
+        }
+        [HttpGet]
+        public JsonResult LoadProduct(int id,int page,int pageSize)
+        {
             int totalRow = 0;
-            var productModel = _productService.GetListProductByCategoryIdPaging(id,page,pageSize,out totalRow);
+            var productModel = _productService.GetListProductByCategoryIdPaging(id, page, pageSize, out totalRow);
             var productViewModel = Mapper.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(productModel);
             int totalPage = (int)Math.Ceiling((double)totalRow / pageSize);
-            var paginationSet = new PaginationSet<ProductViewModel>() {
+            var paginationSet = new PaginationSet<ProductViewModel>()
+            {
+                Items = productViewModel,
+                MaxPage = int.Parse(ConfigHelper.GetBykey("MaxPage")),
+                Page = page,
+                TotalCount = totalRow,
+                TotalPages = totalPage
+            };
+
+            return Json(new
+            {
+                Items = paginationSet.Items,
+                TotalCount = paginationSet.TotalCount,
+            }, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult Category1(int id, int page = 1)
+        {
+
+            int pageSize = int.Parse(ConfigHelper.GetBykey("PageSize"));
+            int totalRow = 0;
+            var productModel = _productService.GetListProductByCategoryIdPaging(id, page, pageSize, out totalRow);
+            var productViewModel = Mapper.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(productModel);
+            int totalPage = (int)Math.Ceiling((double)totalRow / pageSize);
+            var paginationSet = new PaginationSet<ProductViewModel>()
+            {
                 Items = productViewModel,
                 MaxPage = int.Parse(ConfigHelper.GetBykey("MaxPage")),
                 Page = page,

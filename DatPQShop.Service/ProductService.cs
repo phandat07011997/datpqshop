@@ -30,6 +30,9 @@ namespace DatPQShop.Service
 
         IEnumerable<Product> GetListProductByCategoryIdPaging(int categoryId,int page,int pageSize,out int totalRow);
 
+
+        IEnumerable<Product> GetListProductByCategoryId(int categoryId);
+
         void Save();
     }
 
@@ -146,6 +149,12 @@ namespace DatPQShop.Service
             var query = _ProductRepository.GetMulti(x => x.Status==true && x.CategoryID == categoryId);
             totalRow = query.Count();
             return query.Skip((page - 1) * pageSize).Take(pageSize);
+        }
+
+        public IEnumerable<Product> GetListProductByCategoryId(int categoryId)
+        {
+            var query = _ProductRepository.GetMulti(x => x.Status == true && x.CategoryID == categoryId);
+            return query;
         }
     }
 }
