@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace DatPQShop.Web.Controllers
 {
@@ -24,7 +25,13 @@ namespace DatPQShop.Web.Controllers
         // GET: Product
         public ActionResult Detail(int id)
         {
-            return View();
+            var productModel = _productService.GetById(id);
+            var productViewModel = Mapper.Map<Product, ProductViewModel>(productModel);
+            List<string> moreImages = new JavaScriptSerializer().Deserialize<List<string>>(productViewModel.MoreImages);
+            ViewBag.MoreImages = moreImages;
+            var relatedProducts = _productService.GetRelatedProducts(id, 6);
+            ViewBag.RelatedProducts = Mapper.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(relatedProducts);
+            return View(productViewModel);
         }
         public ActionResult Search(string keyword, int page = 1, string sort = "")
         {

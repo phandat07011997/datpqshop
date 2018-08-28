@@ -122,6 +122,7 @@ namespace DatPQShop.Web.Infrastructure.Extensions
             product.Status = productVm.Status;
             product.UpdateBy = productVm.UpdateBy;
             product.Tags = productVm.Tags;
+            product.Quantity = productVm.Quantity;
         }
     }
 }

@@ -16,6 +16,8 @@ namespace DatPQShop.Service
 
         IEnumerable<ProductCategory> GetAll();
 
+        IEnumerable<ProductCategory> GetActiveCategory();
+
         IEnumerable<ProductCategory> GetAllByParentId(int parentId);
 
         ProductCategory GetById(int id);
@@ -44,6 +46,11 @@ namespace DatPQShop.Service
         public ProductCategory Delete(int id)
         {
             return _ProductCategoryRepository.Delete(id);
+        }
+
+        public IEnumerable<ProductCategory> GetActiveCategory()
+        {
+            return _ProductCategoryRepository.GetMulti(x => x.Status == true);
         }
 
         public IEnumerable<ProductCategory> GetAll()

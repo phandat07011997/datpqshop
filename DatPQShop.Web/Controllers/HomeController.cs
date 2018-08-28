@@ -66,7 +66,7 @@ namespace DatPQShop.Web.Controllers
         [ChildActionOnly]
         public ActionResult Category()
         {
-            var model = _productCategoryService.GetAll();
+            var model = _productCategoryService.GetActiveCategory();
             var listProductCategoryViewModel = Mapper.Map<IEnumerable<ProductCategory>, IEnumerable<ProductCategoryViewModel>>(model);
             return PartialView(listProductCategoryViewModel);
         }

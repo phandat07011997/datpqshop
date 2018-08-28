@@ -93,6 +93,10 @@
     <Compile Include="Migrations\201808251435528_AddContentToSlide.Designer.cs">
       <DependentUpon>201808251435528_AddContentToSlide.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808280856279_AddQuantityField.cs" />
+    <Compile Include="Migrations\201808280856279_AddQuantityField.Designer.cs">
+      <DependentUpon>201808280856279_AddQuantityField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ErrorRepository.cs" />
@@ -149,6 +153,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808251435528_AddContentToSlide.resx">
       <DependentUpon>201808251435528_AddContentToSlide.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808280856279_AddQuantityField.resx">
+      <DependentUpon>201808280856279_AddQuantityField.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

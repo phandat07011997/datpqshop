@@ -7,7 +7,8 @@
             CreatedDate: new Date(),
             Status: true,
             HomeFlag: true,
-            HotFlag:false
+            HotFlag: false,
+            Quantity:0
         }
         $scope.GetSeoTitle = GetSeoTitle;
         function GetSeoTitle() {

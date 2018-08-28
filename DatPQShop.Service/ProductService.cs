@@ -28,6 +28,8 @@ namespace DatPQShop.Service
 
         IEnumerable<Product> GetLastest(int top);
 
+        IEnumerable<Product> GetRelatedProducts(int id,int top);
+
         IEnumerable<Product> GetHotProduct(int top);
 
         IEnumerable<Product> GetListProductByCategoryIdPaging(int categoryId,int page,int pageSize,out int totalRow,string sort);
@@ -194,6 +196,10 @@ namespace DatPQShop.Service
             return _ProductRepository.GetMulti(x => x.Status == true && x.Name.Contains(name)).Select(y => y.Name);
         }
 
-        
+        public IEnumerable<Product> GetRelatedProducts(int id, int top)
+        {
+            var product = _ProductRepository.GetSingleById(id);
+            return _ProductRepository.GetMulti(x => x.Status == true&&x.CategoryID==product.CategoryID&&x.ID!=id).OrderByDescending(x => x.CreatedDate).Take(top);
+        }
     }
 }
