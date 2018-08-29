@@ -2302,6 +2302,7 @@
     <Content Include="Assets\admin\libs\jquery-ui\ui\widgets\tabs.js" />
     <Content Include="Assets\admin\libs\jquery-ui\ui\widgets\tooltip.js" />
     <Content Include="Assets\client\css\bootstrap.css" />
+    <Content Include="Assets\client\css\custom.css" />
     <Content Include="Assets\client\css\etalage.css" />
     <Content Include="Assets\client\css\form.css" />
     <Content Include="Assets\client\css\style.css" />
@@ -2484,6 +2485,7 @@
     <Content Include="Views\Product\Category.cshtml" />
     <Content Include="Views\Product\Search.cshtml" />
     <Content Include="Views\Product\Detail.cshtml" />
+    <Content Include="Views\Product\ListProductByTag.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DatPQShop.Common\DatPQShop.Common.csproj">

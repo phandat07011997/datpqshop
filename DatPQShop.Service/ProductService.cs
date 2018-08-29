@@ -36,6 +36,14 @@ namespace DatPQShop.Service
 
         IEnumerable<Product> Search(string keyword, int page, int pageSize, out int totalRow, string sort);
 
+        IEnumerable<Tag> GetListTagByProductId(int id);
+
+        Tag GetTagById(string tagId);
+
+        void IncreaseView(int id);
+
+        IEnumerable<Product> GetListProductByTag(string tagId, int page, int pageSize, out int total);
+
         void Save();
     }
 
@@ -200,6 +208,36 @@ namespace DatPQShop.Service
         {
             var product = _ProductRepository.GetSingleById(id);
             return _ProductRepository.GetMulti(x => x.Status == true&&x.CategoryID==product.CategoryID&&x.ID!=id).OrderByDescending(x => x.CreatedDate).Take(top);
+        }
+
+        public IEnumerable<Tag> GetListTagByProductId(int id)
+        {
+            return _productTagRepository.GetMulti(x => x.ProductID == id, new string[] { "Tag" }).Select(y => y.Tag);
+        }
+
+        public void IncreaseView(int id)
+        {
+            var product = _ProductRepository.GetSingleById(id);
+            if (product.ViewCount.HasValue)
+            {
+                product.ViewCount = product.ViewCount + 1;
+            }
+            else product.ViewCount = 1;
+            _ProductRepository.Update(product);
+             
+        }
+
+        public IEnumerable<Product> GetListProductByTag(string tagId,int page,int pageSize,out int total)
+        {
+
+            var model = _productTagRepository.GetMulti(x => x.TagID == tagId, new string[] { "Product" }).Select(y => y.Product).Where(z=>z.Status==true);
+            total = model.Count();
+            return model.OrderByDescending(x => x.CreatedDate).Skip((page - 1) * pageSize).Take(pageSize);
+        }
+
+        public Tag GetTagById(string tagId)
+        {
+            return _tagRepository.GetSingleByCondition(x => x.ID == tagId);
         }
     }
 }

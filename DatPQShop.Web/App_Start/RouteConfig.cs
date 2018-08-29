@@ -42,6 +42,13 @@ namespace DatPQShop.Web
                 defaults: new { controller = "Product", action = "Search", id = UrlParameter.Optional },
                 namespaces: new string[] { "DatPQShop.Web.Controllers" }
             );
+
+            routes.MapRoute(
+                name: "ListProductByTag",
+                url: "tag/{tagId}.html",
+                defaults: new { controller = "Product", action = "ListProductByTag", tagId = UrlParameter.Optional },
+                namespaces: new string[] { "DatPQShop.Web.Controllers" }
+            );
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
