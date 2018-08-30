@@ -101,6 +101,10 @@
     <Compile Include="Migrations\201808290642437_AddForeignKeyForProduct.Designer.cs">
       <DependentUpon>201808290642437_AddForeignKeyForProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808300851533_AddFieldForPageTable.cs" />
+    <Compile Include="Migrations\201808300851533_AddFieldForPageTable.Designer.cs">
+      <DependentUpon>201808300851533_AddFieldForPageTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ErrorRepository.cs" />
@@ -163,6 +167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808290642437_AddForeignKeyForProduct.resx">
       <DependentUpon>201808290642437_AddForeignKeyForProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808300851533_AddFieldForPageTable.resx">
+      <DependentUpon>201808300851533_AddFieldForPageTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

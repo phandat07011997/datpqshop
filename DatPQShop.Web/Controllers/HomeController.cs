@@ -21,6 +21,7 @@ namespace DatPQShop.Web.Controllers
             this._commonService = commonService;
             this._productCategoryService = productCategoryService;
         }
+        [OutputCache(Duration = 60,Location =System.Web.UI.OutputCacheLocation.Server)]
         public ActionResult Index()
         {
 
@@ -38,22 +39,12 @@ namespace DatPQShop.Web.Controllers
             return View(homeViewModel);
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
+        
         [ChildActionOnly]
+        [OutputCache(Duration =3600)]
         public ActionResult Footer()
         {
+            
             var footerModel = _commonService.GetFooter();
             var footerViewModel = Mapper.Map<Footer, FooterViewModel>(footerModel);
             return PartialView(footerViewModel);
@@ -64,6 +55,7 @@ namespace DatPQShop.Web.Controllers
             return PartialView();
         }
         [ChildActionOnly]
+        [OutputCache(Duration = 3600)]
         public ActionResult Category()
         {
             var model = _productCategoryService.GetActiveCategory();

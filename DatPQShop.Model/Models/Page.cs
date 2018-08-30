@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DatPQShop.Model.Abstract;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 namespace DatPQShop.Model.Models
 {
     [Table("Pages")]
-    public class Page
+    public class Page : Auditable
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
