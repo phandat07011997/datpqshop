@@ -33,6 +33,7 @@ namespace DatPQShop.Data
         public DbSet<Tag> Tags { set; get; }
         public DbSet<VisitorStatistic> VisitorStatistics { set; get; }
         public DbSet<Error> Errors { set; get; }
+        public DbSet<ContactDetail> ContactDetails { set; get; }
 
         public static DatPQShopDbContext Create()
         {

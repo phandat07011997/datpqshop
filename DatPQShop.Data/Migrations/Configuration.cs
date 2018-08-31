@@ -24,7 +24,7 @@
         {
             //CreateProductCategorySample(context);
             CreateSlide(context);
-
+            CreateContactDetail(context);
         }
         private void CreateUser(DatPQShopDbContext context)
         {
@@ -118,6 +118,42 @@
 
                     };
                     context.Pages.Add(page);
+                    context.SaveChanges();
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    foreach (var eve in ex.EntityValidationErrors)
+                    {
+                        Trace.WriteLine($"Entity of type \"{eve.Entry.Entity.GetType().Name}\" in state \"{eve.Entry.State}\" has the following validation error.");
+                        foreach (var ve in eve.ValidationErrors)
+                        {
+                            Trace.WriteLine($"- Property: \"{ve.PropertyName}\", Error: \"{ve.ErrorMessage}\"");
+                        }
+                    }
+                }
+
+            }
+        }
+        private void CreateContactDetail(DatPQShopDbContext context)
+        {
+            if (context.ContactDetails.Count() == 0)
+            {
+                try
+                {
+                    var contactDetail = new DatPQShop.Model.Models.ContactDetail()
+                    {
+                        Name="Shop thời trang DatPQ",
+                        Address="Số 2 Âu Cơ",
+                        Email="phandat07011997@gmail.com",
+                        Lat= 21.061757,
+                        Lng= 105.834930,
+                        Phone="01696934750",
+                        Website="fb.com/phandat97",
+                        Other="",
+                        Status=true
+
+                    };
+                    context.ContactDetails.Add(contactDetail);
                     context.SaveChanges();
                 }
                 catch (DbEntityValidationException ex)
