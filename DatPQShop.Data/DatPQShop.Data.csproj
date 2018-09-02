@@ -109,10 +109,31 @@
     <Compile Include="Migrations\201808301627355_ContactDetail.Designer.cs">
       <DependentUpon>201808301627355_ContactDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808311536306_Feedback.cs" />
+    <Compile Include="Migrations\201808311536306_Feedback.Designer.cs">
+      <DependentUpon>201808311536306_Feedback.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808311538505_FeedbackTable.cs" />
+    <Compile Include="Migrations\201808311538505_FeedbackTable.Designer.cs">
+      <DependentUpon>201808311538505_FeedbackTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808311544525_AddFeedBackTable.cs" />
+    <Compile Include="Migrations\201808311544525_AddFeedBackTable.Designer.cs">
+      <DependentUpon>201808311544525_AddFeedBackTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808311546377_FeedBack2.cs" />
+    <Compile Include="Migrations\201808311546377_FeedBack2.Designer.cs">
+      <DependentUpon>201808311546377_FeedBack2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808311550489_AddFeedbackTable2.cs" />
+    <Compile Include="Migrations\201808311550489_AddFeedbackTable2.Designer.cs">
+      <DependentUpon>201808311550489_AddFeedbackTable2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ContactDetailRepository.cs" />
     <Compile Include="Repositories\ErrorRepository.cs" />
+    <Compile Include="Repositories\FeedbackRepository.cs" />
     <Compile Include="Repositories\FooterRepository.cs" />
     <Compile Include="Repositories\MenuGroupRepository.cs" />
     <Compile Include="Repositories\MenuRepository.cs" />
@@ -178,6 +199,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808301627355_ContactDetail.resx">
       <DependentUpon>201808301627355_ContactDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808311536306_Feedback.resx">
+      <DependentUpon>201808311536306_Feedback.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808311538505_FeedbackTable.resx">
+      <DependentUpon>201808311538505_FeedbackTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808311544525_AddFeedBackTable.resx">
+      <DependentUpon>201808311544525_AddFeedBackTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808311546377_FeedBack2.resx">
+      <DependentUpon>201808311546377_FeedBack2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808311550489_AddFeedbackTable2.resx">
+      <DependentUpon>201808311550489_AddFeedbackTable2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
