@@ -28,6 +28,12 @@ namespace DatPQShop.Web
                 namespaces: new string[] { "DatPQShop.Web.Controllers" }
             );
             routes.MapRoute(
+                name: "Register",
+                url: "dang-ky.html",
+                defaults: new { controller = "Account", action = "Register", id = UrlParameter.Optional },
+                namespaces: new string[] { "DatPQShop.Web.Controllers" }
+            );
+            routes.MapRoute(
                 name: "About",
                 url: "gioi-thieu.html",
                 defaults: new { controller = "About", action = "Index", id = UrlParameter.Optional },
