@@ -34,6 +34,12 @@ namespace DatPQShop.Web
                 namespaces: new string[] { "DatPQShop.Web.Controllers" }
             );
             routes.MapRoute(
+                name: "Cart",
+                url: "gio-hang.html",
+                defaults: new { controller = "ShoppingCart", action = "Index", id = UrlParameter.Optional },
+                namespaces: new string[] { "DatPQShop.Web.Controllers" }
+            );
+            routes.MapRoute(
                 name: "About",
                 url: "gioi-thieu.html",
                 defaults: new { controller = "About", action = "Index", id = UrlParameter.Optional },
