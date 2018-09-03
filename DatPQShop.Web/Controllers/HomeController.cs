@@ -21,7 +21,7 @@ namespace DatPQShop.Web.Controllers
             this._commonService = commonService;
             this._productCategoryService = productCategoryService;
         }
-        [OutputCache(Duration = 60,Location =System.Web.UI.OutputCacheLocation.Server)]
+        [OutputCache(Duration = 60,Location =System.Web.UI.OutputCacheLocation.Client)]
         public ActionResult Index()
         {
 
